@@ -316,6 +316,10 @@
     mime-types "2.1.12"
     request "2.78.0"
 
+"@shopify/polaris-icons-internal@1.0.1":
+  version "1.0.1"
+  resolved "https://packages.shopify.io/shopify/node/npm/@shopify/polaris-icons-internal/-/polaris-icons-internal-1.0.1.tgz#6b0f194799de34afb8b97a79e4c00db390ac6f66"
+
 "@shopify/polaris-tokens@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-1.2.0.tgz#dca924fd88438f21c94cccf51fa80bbec0fff277"

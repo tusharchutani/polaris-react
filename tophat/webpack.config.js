@@ -4,7 +4,8 @@ const {
 } = require('@shopify/images/optimize');
 const postcssShopify = require('postcss-shopify');
 
-const ICON_PATH_REGEX = /icons\//;
+const INTERNAL_ICON_PATH_REGEX = /icons\//;
+const PACKAGE_ICON_PATH_REGEX = /polaris-icons-internal\//;
 const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
 
 module.exports = {
@@ -58,7 +59,11 @@ module.exports = {
     rules: [
       {
         test(resource) {
-          return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');
+          return (
+            (INTERNAL_ICON_PATH_REGEX.test(resource) ||
+              PACKAGE_ICON_PATH_REGEX.test(resource)) &&
+            resource.endsWith('.svg')
+          );
         },
         use: [
           {
@@ -75,7 +80,11 @@ module.exports = {
       {
         test(resource) {
           return (
-            IMAGE_PATH_REGEX.test(resource) && !ICON_PATH_REGEX.test(resource)
+            IMAGE_PATH_REGEX.test(resource) &&
+            !(
+              INTERNAL_ICON_PATH_REGEX.test(resource) ||
+              PACKAGE_ICON_PATH_REGEX.test(resource)
+            )
           );
         },
         use: [

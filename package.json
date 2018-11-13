@@ -88,7 +88,7 @@
     "@percy/puppeteer": "^0.4.0",
     "@shopify/jest-dom-mocks": "^2.0.5",
     "@shopify/js-uploader": "github:shopify/js-uploader",
-    "@shopify/polaris-icons-internal": "1.0.1",
+    "@shopify/polaris-icons-internal": "^1.0.6",
     "@shopify/react-serialize": "^1.0.6",
     "@shopify/sewing-kit": "0.63.0",
     "@types/enzyme": "^3.1.14",

@@ -30,17 +30,17 @@ import {
   circlePlus,
   circlePlusOutline,
   conversation,
-  delete as deleteIcon,
+  deleteIcon,
   disable,
   dispute,
   duplicate,
   embed,
-  export as exportIcon,
+  exportIcon,
   external,
   help,
   home,
   horizontalDots,
-  import as importIcon,
+  importIcon,
   logOut,
   notes,
   notification,
@@ -207,13 +207,9 @@ function Icon({
     const iconSource =
       typeof source === 'string' ? BUNDLED_ICONS[source] : source;
     contentMarkup = iconSource &&
-      iconSource.viewBox &&
-      iconSource.body && (
-        <svg
+        <span
           className={styles.Svg}
-          viewBox={iconSource.viewBox}
-          dangerouslySetInnerHTML={{__html: iconSource.body}}
-          focusable="false"
+          dangerouslySetInnerHTML={{__html: iconSource}}
           aria-hidden="true"
         />
       );

@@ -72,7 +72,6 @@ export class Avatar extends React.PureComponent<CombinedProps, State> {
     const {hasError, hasLoaded} = this.state;
 
     const hasImage = (source || customer) && !hasError;
-    console.log('hasImage', hasImage);
 
     const nameString = name || initials;
 

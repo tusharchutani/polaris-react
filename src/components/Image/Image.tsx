@@ -16,13 +16,36 @@ export interface Props extends React.HTMLProps<HTMLImageElement> {
   onError?(): void;
 }
 
+export interface State {
+  imageLoaded: boolean;
+}
+
 export default class Image extends React.PureComponent<Props, never> {
+  // state: State = {
+  //   imageLoaded: false,
+  // };
+
   private imgRef = React.createRef<HTMLImageElement>();
 
   componentDidMount() {
-    // const {onLoad = noop, onError = noop} = this.props;
-    // this.imgRef.current && this.imgRef.current.complete ? onLoad() : onError();
-    this.imgRef.current && this.imgRef.current.complete;
+    const img = this.imgRef.current;
+    if (!img) {
+      return;
+    }
+    const {onLoad = noop, onError = noop, source} = this.props;
+    img.setAttribute('src', source);
+    img.addEventListener('load', onLoad);
+    img.addEventListener('error', onError);
+  }
+
+  componentWillUnmount() {
+    const img = this.imgRef.current;
+    if (!img) {
+      return;
+    }
+    const {onLoad = noop, onError = noop} = this.props;
+    img.removeEventListener('load', onLoad);
+    img.removeEventListener('error', onError);
   }
 
   render() {
@@ -45,22 +68,16 @@ export default class Image extends React.PureComponent<Props, never> {
     return finalSourceSet ? (
       // eslint-disable-next-line jsx-a11y/alt-text
       <img
-        src={source}
+        ref={this.imgRef}
         srcSet={finalSourceSet}
         crossOrigin={crossOrigin as CrossOrigin}
-        ref={this.imgRef}
-        onLoad={onLoad}
-        onError={onError}
         {...rest}
       />
     ) : (
       // eslint-disable-next-line jsx-a11y/alt-text
       <img
         ref={this.imgRef}
-        src={source}
         crossOrigin={crossOrigin as CrossOrigin}
-        onLoad={onLoad}
-        onError={onError}
         {...rest}
       />
     );

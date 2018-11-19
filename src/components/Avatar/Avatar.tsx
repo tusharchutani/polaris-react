@@ -72,6 +72,7 @@ export class Avatar extends React.PureComponent<CombinedProps, State> {
     const {hasError, hasLoaded} = this.state;
 
     const hasImage = (source || customer) && !hasError;
+    console.log('hasImage', hasImage);
 
     const nameString = name || initials;
 
@@ -147,11 +148,13 @@ export class Avatar extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   handleError() {
+    console.log('handleError');
     this.setState({hasError: true, hasLoaded: false});
   }
 
   @autobind
   handleLoad() {
+    console.log('handleLoad');
     this.setState({hasLoaded: true, hasError: false});
   }
 }

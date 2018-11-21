@@ -34,7 +34,12 @@ const uploader = new Uploader({
   version: currentVersion,
   // Upload assets to the /latest/ directory
   // only when the version is stable (no alpha, beta, rc…)
-  latest: isStableVersion,
+
+  // ⚠️ ️TEMPORARILY SET TO 'false' - DO NOT MERGE TO MASTER ⚠️
+  // Don't upload assets to the /latest/ directory
+  // as this version is currently used in Shopify/web only,
+  // while newer versions of polaris-react already exist in the wild
+  latest: false && isStableVersion,
 });
 
 uploader.deployStaticFiles().catch((err) => {

@@ -38,7 +38,7 @@ For the best experience when creating an application frame, use the following co
 
 ## Examples
 
-### Frame
+### Frame in a stand-alone application
 
 Use to present the frame structure and all of its elements.
 
@@ -88,9 +88,6 @@ class FrameExample extends React.Component {
     ) : null;
 
     const userMenuActions = [
-      {
-        items: [{content: 'Back to Shopify', icon: 'arrowLeft'}],
-      },
       {
         items: [{content: 'Community forums'}],
       },
@@ -162,10 +159,19 @@ class FrameExample extends React.Component {
     const navigationMarkup = (
       <Navigation location="/" userMenu={navigationUserMenuMarkup}>
         <Navigation.Section
-          title="Settings"
           items={[
             {
-              label: 'Account',
+              label: 'Back to Shopify',
+              icon: 'arrowLeft',
+            },
+          ]}
+        />
+        <Navigation.Section
+          separator
+          title="Jaded Pixel App"
+          items={[
+            {
+              label: 'Dashboard',
               icon: 'home',
               onClick: this.toggleState('isLoading'),
             },
@@ -175,17 +181,6 @@ class FrameExample extends React.Component {
               onClick: this.toggleState('isLoading'),
             },
           ]}
-        />
-        <Navigation.Section
-          title="Support"
-          items={[
-            {
-              label: 'Help center',
-              icon: 'help',
-              onClick: this.toggleState('isLoading'),
-            },
-          ]}
-          separator
           action={{
             icon: 'conversation',
             accessibilityLabel: 'Contact support',
@@ -369,6 +364,266 @@ class FrameExample extends React.Component {
 
   handleMessageChange = (supportMessage) => {
     this.setState({supportMessage});
+  };
+}
+```
+
+### Frame in the Shopify admin
+
+Use to present the frame structure and all of its elements in the context of the Shopify admin.
+
+```jsx
+class FrameExample extends React.Component {
+  state = {
+    navigationVisible: false,
+    selectedItems: [],
+  };
+
+  render() {
+    const {navigationVisible} = this.state;
+    const activeLocation = window.location.href;
+
+    const resourceName = {
+      singular: 'customer',
+      plural: 'customers',
+    };
+
+    const items = [
+      {
+        id: 341,
+        url: 'customers/341',
+        name: 'Mae Jemison',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 256,
+        url: 'customers/256',
+        name: 'Ellen Ochoa',
+        location: 'Los Angeles, USA',
+      },
+    ];
+
+    const promotedBulkActions = [
+      {
+        content: 'Edit customers',
+        onAction: () => console.log('Todo: implement bulk edit'),
+      },
+    ];
+
+    const bulkActions = [
+      {
+        content: 'Add tags',
+        onAction: () => console.log('Todo: implement bulk add tags'),
+      },
+      {
+        content: 'Remove tags',
+        onAction: () => console.log('Todo: implement bulk remove tags'),
+      },
+      {
+        content: 'Delete customers',
+        onAction: () => console.log('Todo: implement bulk delete'),
+      },
+    ];
+
+    const userMenuMarkup = (
+      <TopBar.UserMenu
+        actions={[
+          {
+            items: [
+              {content: 'Your profile', icon: 'profile'},
+              {content: 'Log out', icon: 'logOut'},
+            ],
+          },
+          {
+            items: [
+              {content: 'Shopify help center'},
+              {content: 'Community forums'},
+            ],
+          },
+        ]}
+        name="Dharma"
+        detail="Jaded Pixel"
+        initials="D"
+        open={false}
+      />
+    );
+
+    const topBar = (
+      <TopBar
+        showNavigationToggle
+        searchField={<TopBar.SearchField placeholder="Search" value="" />}
+        onNavigationToggle={() => this.handleToggle()}
+        userMenu={userMenuMarkup}
+      />
+    );
+
+    const navUserMenu = (
+      <Navigation.UserMenu
+        actions={[
+          {
+            items: [
+              {content: 'Your profile', icon: 'profile'},
+              {content: 'Log out', icon: 'logOut'},
+            ],
+          },
+          {
+            items: [
+              {content: 'Shopify help center'},
+              {content: 'Community forums'},
+            ],
+          },
+        ]}
+        name="Dharma"
+        detail="Jaded Pixel"
+        initials="D"
+        open={false}
+      />
+    );
+
+    const navigationMarkup = (
+      <Navigation
+        location={activeLocation}
+        onDismiss={() => this.handleDismiss()}
+        userMenu={navUserMenu}
+      >
+        <Navigation.Section
+          items={[
+            {
+              label: 'Home',
+              icon: 'home',
+            },
+            {
+              label: 'Orders',
+              icon: 'orders',
+              url: activeLocation,
+            },
+            {
+              label: 'Products',
+              icon: 'products',
+            },
+            // {
+            //   label: 'Customers',
+            //   icon: customers,
+            // },
+            // {
+            //   label: 'Analytics',
+            //   icon: analytics,
+            // },
+            // {
+            //   label: 'Marketing',
+            //   icon: marketing,
+            // },
+            // {
+            //   label: 'Apps',
+            //   icon: apps,
+            // },
+          ]}
+        />
+        <Navigation.Section
+          fill
+          title="Sales channels"
+          items={[
+            {
+              label: 'Online Store',
+              icon: 'onlineStore',
+            },
+          ]}
+          separator
+          action={{
+            icon: 'circlePlusOutline',
+            accessibilityLabel: 'Add a sales channel',
+          }}
+        />
+        <Navigation.Section
+          items={[
+            {
+              label: 'Settings',
+              // icon: settings,
+            },
+          ]}
+        />
+      </Navigation>
+    );
+
+    return (
+      <AppProvider
+        theme={{
+          logo: {
+            width: 104,
+            topBarSource:
+              'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-white.svg',
+            contextualSaveBarSource:
+              'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
+          },
+          colors: {
+            topBar: {
+              color: '#f9fafb',
+              background: 'rgb(28, 34, 96)',
+              backgroundDarker: 'rgb(0, 8, 75)',
+              backgroundLighter: 'rgb(67, 70, 127)',
+            },
+          },
+        }}
+      >
+        <Frame
+          showMobileNavigation={navigationVisible}
+          navigation={navigationMarkup}
+          topBar={topBar}
+          onNavigationDismiss={() => this.handleDismiss()}
+        >
+          <Page title="Customers">
+            <Layout>
+              <Layout.Section>
+                <Card>
+                  <ResourceList
+                    resourceName={resourceName}
+                    items={items}
+                    renderItem={this.renderItem}
+                    selectedItems={this.state.selectedItems}
+                    onSelectionChange={this.handleSelectionChange}
+                    promotedBulkActions={promotedBulkActions}
+                    bulkActions={bulkActions}
+                  />
+                </Card>
+              </Layout.Section>
+            </Layout>
+          </Page>
+        </Frame>
+      </AppProvider>
+    );
+  }
+
+  handleToggle = () => {
+    this.setState(({navigationVisible}) => ({
+      navigationVisible: !navigationVisible,
+    }));
+  };
+
+  handleDismiss = () => {
+    this.setState({navigationVisible: false});
+  };
+
+  renderItem = (item) => {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
+
+    return (
+      <ResourceList.Item
+        id={id}
+        url={url}
+        media={media}
+        accessibilityLabel={`View details for ${name}`}
+      >
+        <h3>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </h3>
+        <div>{location}</div>
+      </ResourceList.Item>
+    );
+  };
+
+  handleSelectionChange = (selectedItems) => {
+    this.setState({selectedItems});
   };
 }
 ```

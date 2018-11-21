@@ -38,9 +38,11 @@ Use to build the outer wrapper of a page, including the page title and associate
 
 ## Use in an embedded application
 
-Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the page component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application. Note in the props table that a number of properties are only available in stand-alone applications, and won't work in an embedded context. To help visualize the page component in an embedded application, we've provided the following screenshot.
+Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the page component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
 
-![Screenshot of page component](/link/to/image)
+Note in the props table that a number of properties are only available in stand-alone applications, and won't work in an embedded context. To help visualize the page component in an embedded application, we've provided the following screenshot.
+
+<!-- ![Screenshot of page component]() -->
 
 ---
 

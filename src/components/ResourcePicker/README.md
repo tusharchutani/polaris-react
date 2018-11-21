@@ -28,7 +28,9 @@ keywords:
 
 ## Use in an embedded application
 
-Enable the resource picker component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) by passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge). Use of the resource picker component is only supported in an embedded application—it will not render in a stand-alone application. To help visualize the resource picker component in an embedded application, we've provided the following screenshot.
+Enable the resource picker component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) by passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge).
+
+Use of the resource picker component is only supported in an embedded application—it will not render in a stand-alone application. To help visualize the resource picker component in an embedded application, we've provided the following screenshot.
 
 ![Screenshot product picker - multiple product selection component](embedded/resource-picker/product-picker-multiple.jpg)
 

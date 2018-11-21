@@ -32,7 +32,7 @@ Use to indicate that the page is loading.
 
 ## Required components
 
-The loading component must be wrapped in the [frame](/components/structure/frame) component.
+The loading component must be wrapped in the [frame](/components/structure/frame) component unless used in an embedded application.
 
 ---
 

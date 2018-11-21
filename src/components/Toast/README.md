@@ -33,7 +33,7 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 ## Required components
 
-The toast component must be wrapped in the [frame](/components/structure/frame) component.
+The toast component must be wrapped in the [frame](/components/structure/frame) component unless used in an embedded application.
 
 ---
 

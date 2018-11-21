@@ -17,6 +17,12 @@ The contextual save bar tells merchants their options once they have made change
 
 ---
 
+## Use in an embedded application
+
+Use of the contextual save bar component in an embedded application is [not currently supported](link/to/github/issue).
+
+---
+
 ## Best practices
 
 The contextual save bar component should:

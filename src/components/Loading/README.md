@@ -36,6 +36,12 @@ The loading component must be wrapped in the [frame](/components/structure/frame
 
 ---
 
+## Use in an embedded application
+
+Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the loading component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
+
+---
+
 ## Best practices
 
 The loading component should:

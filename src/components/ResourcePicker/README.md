@@ -22,7 +22,7 @@ keywords:
 
 # Resource picker
 
-**For use with embedded apps only.** The resource picker component provides a search-based interface to help merchants find and select one or more products or collections, and then communicates selected resources through callbacks the component accepts.
+**For use with embedded apps only.** The resource picker component provides a search-based interface to help merchants find and select one or more products or collections, and communicate selected resources through callbacks the component accepts.
 
 ---
 

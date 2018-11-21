@@ -17,6 +17,12 @@ The contextual save bar tells merchants their options once they have made change
 
 ---
 
+## Required components
+
+The contextual save bar component must be wrapped in the [frame](/components/structure/frame) component.
+
+---
+
 ## Use in an embedded application
 
 Use of the contextual save bar component in an embedded application is [not currently supported](link/to/github/issue).

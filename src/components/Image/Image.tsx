@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {noop} from '../../utilities/other';
+// import {noop} from '../../utilities/other';
 
 export interface SourceSet {
   source: string;
@@ -27,34 +27,34 @@ export default class Image extends React.PureComponent<Props, never> {
 
   private imgRef = React.createRef<HTMLImageElement>();
 
-  componentDidMount() {
-    const img = this.imgRef.current;
-    if (!img) {
-      return;
-    }
-    const {onLoad = noop, onError = noop, source} = this.props;
-    img.setAttribute('src', source);
-    img.addEventListener('load', onLoad);
-    img.addEventListener('error', onError);
-  }
+  // componentDidMount() {
+  //   const img = this.imgRef.current;
+  //   if (!img) {
+  //     return;
+  //   }
+  //   const {onLoad = noop, onError = noop, source} = this.props;
+  //   img.setAttribute('src', source);
+  //   img.addEventListener('load', onLoad);
+  //   img.addEventListener('error', onError);
+  // }
 
-  componentWillUnmount() {
-    const img = this.imgRef.current;
-    if (!img) {
-      return;
-    }
-    const {onLoad = noop, onError = noop} = this.props;
-    img.removeEventListener('load', onLoad);
-    img.removeEventListener('error', onError);
-  }
+  // componentWillUnmount() {
+  //   const img = this.imgRef.current;
+  //   if (!img) {
+  //     return;
+  //   }
+  //   const {onLoad = noop, onError = noop} = this.props;
+  //   img.removeEventListener('load', onLoad);
+  //   img.removeEventListener('error', onError);
+  // }
 
   render() {
     const {
       sourceSet,
       source,
       crossOrigin,
-      onLoad = noop,
-      onError = noop,
+      // onLoad = noop,
+      // onError = noop,
       ...rest
     } = this.props;
     const finalSourceSet = sourceSet
@@ -70,6 +70,7 @@ export default class Image extends React.PureComponent<Props, never> {
       <img
         ref={this.imgRef}
         srcSet={finalSourceSet}
+        src={source}
         crossOrigin={crossOrigin as CrossOrigin}
         {...rest}
       />
@@ -78,6 +79,7 @@ export default class Image extends React.PureComponent<Props, never> {
       <img
         ref={this.imgRef}
         crossOrigin={crossOrigin as CrossOrigin}
+        src={source}
         {...rest}
       />
     );

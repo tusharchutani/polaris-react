@@ -69,6 +69,14 @@ export class Avatar extends React.PureComponent<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
 
+    if (typeof document === 'undefined') {
+      const className = classNames(
+        styles.Avatar,
+        size && styles[variationName('size', size)],
+      );
+      return <span className={className} />;
+    }
+
     const {hasError, hasLoaded} = this.state;
 
     const hasImage = (source || customer) && !hasError;

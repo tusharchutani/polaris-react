@@ -316,10 +316,10 @@
     mime-types "2.1.12"
     request "2.78.0"
 
-"@shopify/polaris-icons-internal@^1.0.6":
-  version "1.0.6"
-  resolved "https://packages.shopify.io/shopify/node/npm/@shopify/polaris-icons-internal/-/polaris-icons-internal-1.0.6.tgz#37976aaa3b0e34502f3c1a5cbb48ad076879973e"
-  integrity sha1-N5dqqjsONFAvPBpcu0itB2h5lz4=
+"@shopify/polaris-icons-internal@^1.0.9":
+  version "1.0.9"
+  resolved "https://packages.shopify.io/shopify/node/npm/@shopify/polaris-icons-internal/-/polaris-icons-internal-1.0.9.tgz#add0e956a4d910f7b629dd788e11aa41ac0ab721"
+  integrity sha1-rdDpVqTZEPe2Kd14jhGqQawKtyE=
   dependencies:
     "@shopify/images" "^1.1.5"
     rollup "^0.66.5"

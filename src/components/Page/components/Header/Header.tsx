@@ -35,15 +35,13 @@ export interface PrimaryActionProps
 export interface Props {
   /** Page title, in large type */
   title: string;
-  /** Important and non-interactive status information shown immediately after the title. */
+  /** Important and non-interactive status information shown immediately after the title. (stand-alone app use only) */
   titleMetadata?: React.ReactNode;
-  /** Visually hide the title */
+  /** Visually hide the title (stand-alone app use only) */
   titleHidden?: boolean;
-  /** App icon, for pages that are part of Shopify apps */
-  icon?: string;
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
-  /** Adds a border to the bottom of the page header */
+  /** Adds a border to the bottom of the page header (stand-alone app use only) */
   separator?: boolean;
   /** Collection of secondary page-level actions */
   secondaryActions?: SecondaryAction[];
@@ -51,7 +49,7 @@ export interface Props {
   actionGroups?: ActionGroupDescriptor[];
   /** Primary page-level action */
   primaryAction?: PrimaryActionProps;
-  /** Page-level pagination */
+  /** Page-level pagination (stand-alone app use only) */
   pagination?: PaginationDescriptor;
 }
 

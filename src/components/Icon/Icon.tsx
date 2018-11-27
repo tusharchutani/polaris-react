@@ -55,6 +55,11 @@ import {
   search,
   subtract,
   view,
+  customers,
+  analytics,
+  marketing,
+  apps,
+  settings,
 } from '../../icons';
 
 import * as styles from './Icon.scss';
@@ -149,6 +154,11 @@ export const BUNDLED_ICONS = {
   search,
   subtract,
   view,
+  customers,
+  analytics,
+  marketing,
+  apps,
+  settings,
 };
 
 const COLORS_WITH_BACKDROPS = [

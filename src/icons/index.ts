@@ -51,3 +51,8 @@ export {default as risk} from './risk.svg';
 export {default as save} from './save.svg';
 export {default as search} from './search.svg';
 export {default as view} from './view.svg';
+export {default as customers} from './customers.svg';
+export {default as analytics} from './analytics.svg';
+export {default as marketing} from './marketing.svg';
+export {default as apps} from './apps.svg';
+export {default as settings} from './settings.svg';

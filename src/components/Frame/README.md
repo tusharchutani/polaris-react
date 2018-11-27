@@ -501,22 +501,22 @@ class FrameExample extends React.Component {
               label: 'Products',
               icon: 'products',
             },
-            // {
-            //   label: 'Customers',
-            //   icon: customers,
-            // },
-            // {
-            //   label: 'Analytics',
-            //   icon: analytics,
-            // },
-            // {
-            //   label: 'Marketing',
-            //   icon: marketing,
-            // },
-            // {
-            //   label: 'Apps',
-            //   icon: apps,
-            // },
+            {
+              label: 'Customers',
+              icon: customers,
+            },
+            {
+              label: 'Analytics',
+              icon: analytics,
+            },
+            {
+              label: 'Marketing',
+              icon: marketing,
+            },
+            {
+              label: 'Apps',
+              icon: apps,
+            },
           ]}
         />
         <Navigation.Section
@@ -538,7 +538,7 @@ class FrameExample extends React.Component {
           items={[
             {
               label: 'Settings',
-              // icon: settings,
+              icon: settings,
             },
           ]}
         />

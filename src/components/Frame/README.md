@@ -176,7 +176,7 @@ class FrameExample extends React.Component {
               onClick: this.toggleState('isLoading'),
             },
             {
-              label: 'Orders',
+              label: 'Jaded Pixel Orders',
               icon: 'orders',
               onClick: this.toggleState('isLoading'),
             },
@@ -196,8 +196,8 @@ class FrameExample extends React.Component {
       <Page title="Account">
         <Layout>
           <Layout.AnnotatedSection
-            title="Billing details"
-            description="We will use this as your billing information."
+            title="Account details"
+            description="Jaded Pixel will use this as your account information."
           >
             <Card sectioned>
               <FormLayout>

@@ -4,7 +4,6 @@ const fs = require('fs');
 const glob = require('glob');
 const chalk = require('chalk');
 const grayMatter = require('gray-matter');
-const transform = require('@babel/standalone').transform;
 
 module.exports = function loader() {
   const files = glob.sync(`${__dirname}/../../src/components/***/README.md`);
@@ -34,19 +33,24 @@ module.exports = function loader() {
     /"___CODEPLACEHOLDER__(\d+)__(\d+)___"/g,
     (match) => {
       return `function (scope) {
-        const fn = function() { return ${placeholderMappings[match]} };
-        const scopeKeys = Object.keys(scope);
-        const scopeValues = scopeKeys.map((key) => scope[key]);
-
-        const fnString = fn.toString().replace('SCOPE_VARIABLES_PLACEHOLDER', scopeKeys.join(', '));
-        return eval("(" + fnString + ")()")(...scopeValues);
+        return codeInvoker(${placeholderMappings[match]}, scope);
       }`;
     },
   );
 
-  return transform(`module.exports = ${stringyData}`, {
-    presets: ['es2015', 'react', ['stage-1', {decoratorsLegacy: true}]],
-  }).code;
+  const codeInvoker = function(fn, scope) {
+    const scopeKeys = Object.keys(scope);
+    const scopeValues = scopeKeys.map((key) => scope[key]);
+
+    const fnString = fn
+      .toString()
+      .replace('SCOPE_VARIABLES_PLACEHOLDER', scopeKeys.join(', '));
+
+    // eslint-disable-next-line no-eval
+    return eval(`(${fnString})`)(...scopeValues);
+  };
+
+  return `const codeInvoker = ${codeInvoker}; export const components = ${stringyData};`;
 };
 
 const exampleForRegExp = /<!-- example-for: ([\w\s,]+) -->/u;
@@ -215,21 +219,18 @@ function wrapExample(code) {
   const classMatch = classPattern.exec(code);
 
   if (classMatch) {
-    return `(function(SCOPE_VARIABLES_PLACEHOLDER) {
+    return `function(SCOPE_VARIABLES_PLACEHOLDER) {
       ${code}
       return ${classMatch[1]};
-    });`;
+    }`;
   } else {
-    return `(function(SCOPE_VARIABLES_PLACEHOLDER) {
-      class Comp extends React.Component {
-        render() {
+    return `function(SCOPE_VARIABLES_PLACEHOLDER) {
+        return function() {
           return (
             ${code}
           );
         }
-      }
-      return Comp;
-    });`;
+    }`;
   }
 }
 

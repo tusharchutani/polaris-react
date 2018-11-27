@@ -42,7 +42,7 @@ Passing an API key to the [app provider component](https://polaris.shopify.com/c
 
 Note in the props table that a number of properties are only available in stand-alone applications, and won't work in an embedded context. To help visualize the page component in an embedded application, we've provided the following screenshot.
 
-<!-- ![Screenshot of page component]() -->
+![Screenshot of page component in an embedded application](<(embedded/resource-picker/page.jpg)>)
 
 ---
 

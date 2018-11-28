@@ -61,7 +61,7 @@
     "test:percy": "node ./scripts/percy-snapshots.js",
     "test:a11y": "node ./scripts/pa11y.js",
     "start": "node ./playground/server.js",
-    "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./playground/webpack.config.js --env.production",
+    "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./playground/webpack.config.js",
     "readme-update-version": "babel-node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version"
   },

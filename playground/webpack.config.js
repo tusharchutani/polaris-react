@@ -107,6 +107,9 @@ module.exports = (env = {production: false}) => ({
                 ['shopify/web', {modules: false}],
                 ['shopify/react', {hot: true}],
               ],
+              // Currently compilation breaks in the production env for unknown
+              // reasons
+              forceEnv: 'development',
               cacheDirectory: path.resolve(__dirname, 'build/cache/markdown'),
             },
           },
